@@ -9,6 +9,15 @@ header {
   color: #fff;
   padding: 1em;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 nav ul {
@@ -48,33 +57,11 @@ footer {
   flex-direction: column;
   justify-content: center;
 }
-
-.img1 {
-  background-image: url('img1.jpg');
-}
-
-.img2 {
-  background-image: url('img2.jpg');
-}
-
-.img3 {
-  background-image: url('img3.jpg');
-}
-
-.img4 {
-  background-image: url('img4.jpg');
-}
-
-.img5 {
-  background-image: url('img5.jpg');
-}
-
-.img6 {
-  background-image: url('img6.jpg');
-}
-
 #launches {
   color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
   
 }
 
@@ -116,4 +103,14 @@ a:hover {
   max-width: 30%;
   height: auto;
   margin: 10px;
+}
+#detail {
+  display:flex;
+  flex-direction: row;
+
+
+}
+#drugiDetalji{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
