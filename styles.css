@@ -118,6 +118,18 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+#slider{
+  display:flex;
+  flex-direction: row;
+
+}
+.sliderImg{
+  width: 100px;
+}
+#description{
+  width: 300px;
+}
+
 @media  (max-width: 800px) {
   #launches {
     grid-template-columns: 1fr 1fr;
