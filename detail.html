@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="launches.js"></script>
+    <script defer src="script.js"></script>
    
     <title>SpaceX Launches</title>
 </head>
-<body>
+<body onload="displayRocketDetails()">
     <header>
         <h1>SpaceX Launches</h1>
     </header>
@@ -22,29 +22,17 @@
         </ul>
     </nav>
     <div id="detail">
-        <div>
-            <h1 id="title">
-                
-                SpaceX
-            </h1>
+        <div class="rocket-info">
+            <h1 id="title">SpaceX</h1>
             <h4 id="tip">info</h4>
-            <h4 id="datum">datum</h4>
-            <div id="drugiDetalji">
-                
-                <p>detalji</p>
-                <p>detalji2</p>
-            </div>
-            <p id=" opis">
-                dfnsjdfbnsjfkdsjhk
-            </p>
-            <a href="rockets.html">
-                
-
-            </a>
+            <h4 id="height">visina</h4>
+            <h4 id="mass">masa</h4>
+            <p id="description">description</p>
+            <a href="rockets.html"></a>
 
         </div>
-        <div >
-            <img width="300" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/1200px-Rockstar_Games_Logo.svg.png"/>
+        <div class="rocket-image">
+            <img id="img" src=""  alt="Rocket Image"/>
         </div>
     </div>
     <footer>

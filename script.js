@@ -1,27 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-    //const launchesButton = document.querySelector('button[data-section="launches"]');
-    //const rocketsButton = document.querySelector('button[data-section="rockets"]');
-    //const companyButton = document.querySelector('button[data-section="company"]');
-    //const backButton = document.querySelector('button');
-  
-    //launchesButton.addEventListener('click', function  () {
-        //navigateTo('launches');
-   // });
-  
-   // rocketsButton.addEventListener('click', function s () {
-        //navigateTo('rockets');
-   // });
-  
-   // companyButton.addEventListener('click', function  () {
-        //navigateTo('company');
-   // });
-  
-    //displayLaunches()
-    displayRockets()
-  
-    //displayHome();
-  });
-  
+
   async function fetchData(endpoint) {
     try {
         const response = await fetch(endpoint);
@@ -32,16 +9,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-  //async function fetchRocketDetails(rocketId) {
-    //const rocketEndpoint = `https://api.spacexdata.com/v4/rockets/${rocketId}`;
-   // try {
-        //const response = await fetch(rocketEndpoint);
-       // const data = await response.json();
-        //return data;
-   // } catch (error) {
-        //console.error("Error fetching rocket details:", error);
-   // }
- //}
+  async function fetchRocketDetails(rocketId) {
+    const rocketEndpoint = `https://api.spacexdata.com/v4/rockets/${rocketId}`;
+    try {
+        const response = await fetch(rocketEndpoint);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching rocket details:", error);
+    }
+ }
   
   function navigateTo(section) {
     const sections = [ "launches", "rockets", "company"];
@@ -152,8 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Type: ${rocket.type}</p>
             <p>Height: ${rocket.height.meters} meters</p>
             <p>Mass: ${rocket.mass.kg} kg</p>
-            <img src="${rocket.flickr_images[0] || 'https://via.placeholder.com/150'}" alt="Rocket Image">
-            <button onclick="displayRocketDetails('${rocket.id}')">Details</button>
+            <img id="rocketImg" src="${rocket.flickr_images[0] || 'https://via.placeholder.com/150'}" alt="Rocket Image">
+            <a href="detail.html?id=${rocket.id}">Details</a>
         `;
         rocketsSection.appendChild(rocketInfo);
     });
@@ -161,20 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
     rocketsSection.style.display = "block";
   }
   
- // async function displayRocketDetails(rocketId) {
-    //console.log('cao')
-   // const rocketData = await fetchRocketDetails(rocketId);
-  
+  async function displayRocketDetails() {
+
+    const itemId = new URLSearchParams(window.location.search).get('id');
+    console.log(itemId)
+    const rocketData = await fetchRocketDetails(itemId);
     
-    window.location.href = "detail.html"
-    //const detailsWindow = document.getElementById("details")
-    //detailsWindow.innerHTML = `
-       // <h2>${rocketData.name}</h2>
-       // <p>Type: ${rocketData.type}</p>
-        //<p>Height: ${rocketData.height.meters} meters</p>
-        //<p>Mass: ${rocketData.mass.kg} kg</p>
-       //<img src="${rocketData.flickr_images[0] || 'https://via.placeholder.com/150'}" alt="Rocket Image">
-   // `; 
-   // console.log(detailsWindow)
-    //console.log("ndas")
- // }
+    console.log(rocketData)
+    document.getElementById('title').innerText = rocketData.name
+    document.getElementById('tip').innerText = rocketData.type
+    document.getElementById('height').innerText = rocketData.height.meters + 'm'
+    document.getElementById('mass').innerText = rocketData.mass.kg + 'kg'
+    document.getElementById('description').innerText = rocketData.description
+    document.getElementById('img').src = rocketData.flickr_images[0]
+
+  }
+ 
